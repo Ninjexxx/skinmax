@@ -139,10 +139,10 @@ SkinMax/
 │   │   ├── recommender.py     # Template-based routine engine
 │   │   ├── chatbot.py         # TF-IDF chatbot
 │   │   ├── progress.py        # Skin health scoring
-│   │   └── skin_twin.py       # Cosine similarity matching
+│   │   └── skin_twin.go       # Cosine similarity matching
 │   ├── services/
 │   │   ├── weather.py         # OpenWeatherMap integration
-│   │   └── scheduler.py       # APScheduler routines
+│   │   └── scheduler.go       # APScheduler routines
 │   └── app.py                 # Flask entry point
 │
 ├── go-auth/                   # Go JWT microservice
