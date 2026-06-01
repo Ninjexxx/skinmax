@@ -16,6 +16,6 @@ class Scan(db.model):
     face_shape = db.Column(db.String)
     hair_type = db.Column(db.String)
     eye_color = db.Column(db.String)
-    lip_color = db.Column(db.String)
+    lip_color = db.Column(db.String)    
     health_score = db.Column(db.Float)
     advice_json = db.Column(db.Text)
