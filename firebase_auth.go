@@ -69,7 +69,6 @@ func getPublicKeys() (map[string]*rsa.PublicKey, error) {
 		keys[kid] = rsaKey
 	}
 
-	// Store in cache
 	cache.mu.Lock()
 	cache.keys = keys
 	cache.expiry = time.Now().Add(time.Duration(maxAge) * time.Second)

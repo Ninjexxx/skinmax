@@ -11,6 +11,7 @@ import (
 )
 
 func main() {
+
 	if err := godotenv.Load(); err != nil {
 		log.Println("No .env file, using environment variables")
 	}
@@ -55,12 +56,9 @@ func main() {
 
 	protected := FirebaseAuth(projectID, proxyHandler)
 
-	http.HandleFunc("/health", func(w http.ResponseWriter, r *http.Request) {
-		fmt.Fprintln(w, "Go gateway running")
-	})
-
+	http.HandleFunc("/register", registerHandler)
 	http.Handle("/", protected)
-
 	fmt.Printf("Gateway running on :%s → Flask at %s\n", port, flaskURL)
 	log.Fatal(http.ListenAndServe(":"+port, nil))
+
 }
