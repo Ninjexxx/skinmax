@@ -1,3 +1,6 @@
+import sys, os
+sys.path.append(os.path.dirname(__file__))
+
 from completeec import detect_eye_color
 from model import detect_hair_texture
 

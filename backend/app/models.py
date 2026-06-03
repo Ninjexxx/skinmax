@@ -5,9 +5,9 @@ class User(db.Model):
     id = db.Column(db.String, primary_key=True)
     email = db.Column(db.String, nullable=False)
     created_at=db.Column(db.DateTime, default=datetime.utcnow)
-class Scan(db.model):
+class Scan(db.Model):
     id=db.Column(db.Integer,autoincrement=True,primary_key=True)
-    user_id=id.Column(db.string,db.ForeignKey('user.id'),nullable=False)
+    user_id=id.Column(db.String,db.ForeignKey('user.id'),nullable=False)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
     skin_tone = db.Column(db.String)
     undertone = db.Column(db.String)

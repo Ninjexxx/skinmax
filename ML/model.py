@@ -11,12 +11,12 @@ MODEL_PATH = "models/hair_mobilenetv3.keras"
 # Loading takes ~1 second — you don't want to reload every request
 model = keras.models.load_model(MODEL_PATH)
 
-def detect_hair_texture(image_path: str) -> dict:
+def detect_hair_texture(image) -> dict:
     """
     Input:  path to a face/hair photo
     Output: { hair_texture, confidence, all_scores }
     """
-    img = cv2.imread(image_path)
+    img = cv2.imread(image)
     if img is None:
         return {"error": "Could not read image"}
 
@@ -37,12 +37,6 @@ def detect_hair_texture(image_path: str) -> dict:
     return {
         "hair_texture": hair_type,
         "confidence":   confidence,
-        "all_scores": {
-            CLASSES[i]: round(float(probs[i]), 2)
-            for i in range(len(CLASSES))
-        }
+        
     }
 
-if __name__ == "__main__":
-    result = detect_hair_texture("test_face.jpg")
-    print(result)

@@ -151,8 +151,3 @@ def detect_eye_color(image_path: str) -> dict:
         "hsv": {"hue": round(h, 1), "saturation": round(s/255, 3), "value": round(v/255, 3)},
         "lab": {"L": round(L/255, 3)}
     }
-
-# 
-if __name__ == "__main__":
-    result = detect_eye_color("grey.webp")
-    print(result)
