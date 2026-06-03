@@ -1,21 +1,47 @@
+import { useNavigate } from "react-router-dom";
+import { loginWithGoogle } from "../firebase";
 import "../styles/login.css";
 
 export default function Login() {
-  const handleLogin = (e) => {
-    e.preventDefault();
+  const navigate = useNavigate();
 
-    // Firebase Email Login Here Later
-    console.log("Login Clicked");
-  };
+  const handleGoogleLogin = async () => {
+    try {
+      const data = await loginWithGoogle();
 
-  const handleGoogleLogin = () => {
-    // Firebase Google Login Here Later
-    console.log("Google Login");
+      localStorage.setItem(
+        "user",
+        JSON.stringify(data.user)
+      );
+
+      localStorage.setItem(
+        "isLoggedIn",
+        "true"
+      );
+
+      const redirectAfterLogin =
+        localStorage.getItem(
+          "redirectAfterLogin"
+        );
+
+      if (redirectAfterLogin) {
+        localStorage.removeItem(
+          "redirectAfterLogin"
+        );
+
+        navigate("/scan");
+      } else {
+        navigate("/home");
+      }
+    } catch (error) {
+      console.error(error);
+
+      alert("Google Sign In failed");
+    }
   };
 
   return (
     <div className="login-page">
-
       <div className="login-card">
 
         <div className="login-header">
@@ -23,68 +49,37 @@ export default function Login() {
           <p>AI SKINCARE RITUAL</p>
         </div>
 
-        <form onSubmit={handleLogin}>
-
-          <div className="input-group">
-            <label>EMAIL ADDRESS</label>
-
-            <input
-              type="email"
-              placeholder="name@example.com"
-            />
-          </div>
-
-          <div className="input-group">
-
-            <div className="password-row">
-              <label>PASSWORD</label>
-
-              <a href="#">
-                Forgot Password?
-              </a>
-            </div>
-
-            <input
-              type="password"
-              placeholder="••••••••"
-            />
-
-          </div>
-
-          <button
-            type="submit"
-            className="login-btn"
-          >
-            LOGIN
-          </button>
-
-        </form>
-
-        <div className="divider">
-          <span>OR</span>
-        </div>
-
         <button
           className="google-btn"
           onClick={handleGoogleLogin}
         >
-          <span className="google-icon">
-            G
-          </span>
+          <img
+            src="https://developers.google.com/identity/images/g-logo.png"
+            alt="Google"
+            style={{
+              width: "20px",
+              height: "20px",
+              marginRight: "12px"
+            }}
+          />
 
-          Google Sign In
+          Continue with Google
         </button>
 
-        <p className="signup-text">
-          Don't have an account?
-
-          <span> Sign Up</span>
+        <p
+          style={{
+            marginTop: "24px",
+            color: "#777",
+            fontSize: "14px",
+            textAlign: "center"
+          }}
+        >
+          Secure authentication powered by Google
         </p>
 
       </div>
 
       <footer className="login-footer">
-
         <div className="footer-links">
           <a href="#">Privacy</a>
           <a href="#">Terms</a>
@@ -94,9 +89,7 @@ export default function Login() {
         <p>
           © 2026 SkinMax. Premium AI Skincare.
         </p>
-
       </footer>
-
     </div>
   );
 }
