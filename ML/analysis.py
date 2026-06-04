@@ -1,6 +1,5 @@
 import sys, os
 
-# Get the directory where analysis.py is located
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 sys.path.append(BASE_DIR)
 
@@ -11,8 +10,16 @@ from pipeline.face_shape import predict as predict_face_shape
 from pipeline.acne_detector import load_model as load_acne_model, detect_acne
 
 from completeec import detect_eye_color
-from model import detect_hair_texture
-from darkcircle import dark_circles
+
+try:
+    from model import detect_hair_texture
+except Exception:
+    detect_hair_texture = lambda x: {"hair_texture": "N/A"}
+
+try:
+    from darkcircle import dark_circles
+except Exception:
+    dark_circles = lambda x: {"severity": "N/A"}
 
 def analyze_face(image_path: str) -> dict:
     """
@@ -42,31 +49,25 @@ def analyze_face(image_path: str) -> dict:
             "hex": skin_result.get("hex"),
             "lab": skin_result.get("lab")
         },
-
         "lip_color": {
             "color": lip_result.get("color"),
             "hex": lip_result.get("hex")
         },
-
         "face_shape": {
             "shape": face_shape_result.get("shape"),
             "confidence": face_shape_result.get("confidence")
         },
-
         "acne": {
             "overall_severity": acne_result.get("overall_severity"),
             "count": acne_result.get("count"),
             "detections": acne_result.get("detections")
         },
-
         "eye_color": {
             "color": eye_result.get("eye_color")
         },
-
         "hair_texture": {
             "type": hair_result.get("hair_texture")
         },
-
         "dark_circles": {
             "severity": dark_circles_result.get("severity")
         }

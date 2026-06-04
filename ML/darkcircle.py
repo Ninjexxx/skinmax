@@ -10,7 +10,11 @@ import numpy as np
 
 mp_face_mesh = mp.solutions.face_mesh
 
-def dark_circles(image):
+def dark_circles(image_path):
+    image = cv2.imread(image_path)
+
+    if image is None:
+        return {"severity": "N/A"}
     rgb = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
 
 
