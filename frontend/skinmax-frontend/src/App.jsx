@@ -6,6 +6,9 @@ import Login from "./pages/login";
 import ScanPage from "./pages/ScanPage";
 import AnalysisPage from "./pages/AnalysisPage";
 import DermatologistsPage from "./pages/DermatologistPage";
+import WeatherPage from "./pages/WeatherPage";
+import RoutinePage from "./pages/RoutinePage";
+import ProgressPage from "./pages/ProgressPage";
 
 
 function App() {
@@ -41,6 +44,20 @@ function App() {
         <Route
           path="/dermatologists"
           element={<DermatologistsPage />}
+        />
+
+        <Route
+          path="/weather"
+          element={<WeatherPage />}
+        />
+
+        <Route
+          path="/routines"
+          element={<RoutinePage />}
+        />
+        <Route
+          path="/progress"
+          element={<ProgressPage />}
         />
 
       </Routes>

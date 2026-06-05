@@ -29,7 +29,7 @@ export default function Login() {
           "redirectAfterLogin"
         );
 
-        navigate("/scan");
+        navigate(redirectAfterLogin);
       } else {
         navigate("/home");
       }

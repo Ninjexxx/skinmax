@@ -3,6 +3,7 @@ import modelImage from "../assets/model.jpg";
 import { useNavigate } from "react-router-dom";
 import { logoutUser } from "../Firebase";
 
+
 export default function HomePage() {
   const navigate = useNavigate();
 
@@ -25,6 +26,22 @@ export default function HomePage() {
       navigate("/login");
     }
   };
+
+  const handleProtectedNavigation = (
+    path
+  ) => {
+    if (isLoggedIn) {
+      navigate(path);
+    } else {
+      localStorage.setItem(
+        "redirectAfterLogin",
+        path
+      );
+
+      navigate("/login");
+    }
+  };
+  
 
   const handleLogout = async () => {
     try {
@@ -65,23 +82,35 @@ export default function HomePage() {
 
           <button
             className="nav-link"
-            onClick={() => navigate("/login")}
+            onClick={() =>
+              handleProtectedNavigation(
+                "/routines"
+              )
+            }
           >
             Routines
           </button>
 
           <button
             className="nav-link"
-            onClick={() => navigate("/login")}
+            onClick={() =>
+              handleProtectedNavigation(
+                "/progress"
+              )
+            }
           >
-            AI Chat
+            Progress
           </button>
 
           <button
             className="nav-link"
-            onClick={() => navigate("/login")}
+            onClick={() =>
+              handleProtectedNavigation(
+                "/weather"
+              )
+            }
           >
-            Community
+            Weather Care
           </button>
         </nav>
 
@@ -184,7 +213,11 @@ export default function HomePage() {
 
           <button
             className="secondary-btn"
-            onClick={() => navigate("/login")}
+            onClick={() =>
+              handleProtectedNavigation(
+                "/analysis"
+              )
+            }
           >
             View Sample Report
           </button>

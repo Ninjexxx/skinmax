@@ -47,9 +47,9 @@ export default function Sidebar() {
           Analysis
         </NavLink>
 
-        {/* <NavLink to="/weather">
+        {<NavLink to="/weather">
           Weather Based Care
-        </NavLink> */}
+        </NavLink>}
 
         <NavLink to="/dermatologists">
           Dermatologists
@@ -57,21 +57,18 @@ export default function Sidebar() {
 
         <div className="nav-divider"></div>
 
-        <a href="#">
+        <NavLink to="/progress">
           Progress
-        </a>
+        </NavLink>
 
-        <a href="#">
+        <NavLink to="/routines">
           Routines
-        </a>
+        </NavLink>
 
         <a href="#">
           AI Chat
         </a>
 
-        <a href="#">
-          Community
-        </a>
       </nav>
 
       <button
