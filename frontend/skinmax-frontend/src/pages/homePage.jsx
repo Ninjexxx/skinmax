@@ -3,7 +3,6 @@ import modelImage from "../assets/model.jpg";
 import { useNavigate } from "react-router-dom";
 import { logoutUser } from "../Firebase";
 
-
 export default function HomePage() {
   const navigate = useNavigate();
 
