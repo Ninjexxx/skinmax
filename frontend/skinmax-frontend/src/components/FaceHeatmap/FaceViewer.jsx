@@ -10,23 +10,23 @@ function FaceModel() {
   const heatmapTexture = useMemo(() => {
     return createHeatmapTexture([
       {
-        u: 0.5,
-        v: 0.65,
+        u: 0.25,
+        v: 0.55,
         radius: 100,
       },
       {
-        u: 0.49,
-        v: 0.38,
+        u: 0.50,
+        v: 0.55,
         radius: 45,
       },
       {
-        u: 0.65,
-        v: 0.35,
-        radius: 90,
+        u: 0.50,
+        v: 0.85,
+        radius: 150,
       },
       {
-        u: 0.30,
-        v: 0.35,
+        u: 0.75,
+        v: 0.55,
         radius: 120,
       },
     ]);

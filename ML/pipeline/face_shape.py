@@ -66,7 +66,11 @@ def train(save_path="models/face_shape.pkl"):
         pickle.dump({"model": model, "scaler": scaler}, f)
     print(f"Saved → {save_path}")
 
-def predict(points, model_path="models/face_shape.pkl"):
+import os
+
+def predict(points, model_path=None):
+    if model_path is None:
+        model_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), "models", "face_shape.pkl")
     features = extract_features(points)
     if features is None:
         return {"error": "could not extract features"}

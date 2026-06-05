@@ -47,13 +47,28 @@ export default function Sidebar() {
           Analysis
         </NavLink>
 
-        <a href="#">Progress</a>
+        {<NavLink to="/weather">
+          Weather Based Care
+        </NavLink>}
 
-        <a href="#">Routines</a>
+        <NavLink to="/dermatologists">
+          Dermatologists
+        </NavLink>
 
-        <a href="#">AI Chat</a>
+        <div className="nav-divider"></div>
 
-        <a href="#">Community</a>
+        <NavLink to="/progress">
+          Progress
+        </NavLink>
+
+        <NavLink to="/routines">
+          Routines
+        </NavLink>
+
+        <a href="#">
+          AI Chat
+        </a>
+
       </nav>
 
       <button
@@ -65,6 +80,7 @@ export default function Sidebar() {
 
       <div className="bottom-links">
         <a href="#">Settings</a>
+
         <a href="#">Support</a>
 
         <button

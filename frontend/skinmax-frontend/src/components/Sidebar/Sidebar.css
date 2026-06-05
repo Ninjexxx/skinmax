@@ -83,3 +83,9 @@
   cursor: pointer;
   padding: 0;
 }
+
+.nav-divider {
+  height: 1px;
+  background: #e8e3de;
+  margin: 8px 0;
+}
