@@ -11,6 +11,7 @@ analysis_bp = Blueprint('analysis', __name__, url_prefix='/api/analysis')
 @analysis_bp.route('/scan', methods=['POST'])
 @require_auth
 def scan():
+    from app.engine.recommender import get_advice
     if 'image' not in request.files:
         return jsonify({"error": "No image provided"}), 400
 
@@ -59,7 +60,7 @@ def scan():
         eye_color=eye.get("color"),
         lip_color=lip.get("color"),
         health_score=None,
-        advice_json=json.dumps({})
+        advice = get_advice(results)
     )
 
     db.session.add(new_scan)
@@ -80,6 +81,7 @@ def scan():
             "acne_detections": acne.get("detections"),
             "eye_color": eye.get("color"),
             "hair_type": hair.get("type"),
-            "dark_circles": dark.get("severity")
+            "dark_circles": dark.get("severity"),
+            "advice": advice
         }
     }), 200
