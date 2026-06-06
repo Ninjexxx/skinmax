@@ -30,6 +30,8 @@
   border-radius: 50%;
 }
 
+/* EMPTY STATE */
+
 .chat-empty {
   flex: 1;
   display: flex;
@@ -38,6 +40,7 @@
   align-items: center;
   color: #4d3b30;
   text-align: center;
+  margin-top: -60px;
 }
 
 .bot-icon {
@@ -54,18 +57,57 @@
 
 .chat-empty h1 {
   margin-bottom: 12px;
+  font-size: 52px;
+  font-weight: 700;
 }
 
 .chat-empty p {
   color: #8c7b70;
-  max-width: 500px;
+  max-width: 600px;
+  font-size: 18px;
+  line-height: 1.6;
 }
+
+/* CHAT MESSAGES */
+
+.chat-messages {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 20px 0;
+}
+
+.message {
+  max-width: 70%;
+  padding: 14px 18px;
+  border-radius: 18px;
+  line-height: 1.6;
+  font-size: 15px;
+}
+
+.message.user {
+  align-self: flex-end;
+  background: #e6c3aa;
+  color: #4d3b30;
+}
+
+.message.assistant {
+  align-self: flex-start;
+  background: white;
+  border: 1px solid #e8dfd8;
+  color: #4d3b30;
+}
+
+/* QUICK PROMPTS */
 
 .quick-prompts {
   display: flex;
+  justify-content: center;
   gap: 12px;
   flex-wrap: wrap;
-  margin-bottom: 20px;
+  margin-bottom: 24px;
 }
 
 .quick-prompts button {
@@ -74,7 +116,14 @@
   padding: 12px 18px;
   border-radius: 999px;
   cursor: pointer;
+  transition: 0.2s;
 }
+
+.quick-prompts button:hover {
+  background: #f3ece7;
+}
+
+/* INPUT */
 
 .chat-input {
   display: flex;
@@ -84,6 +133,9 @@
   border-radius: 999px;
   padding: 12px 20px;
   box-shadow: 0 10px 30px rgba(0,0,0,.08);
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
 }
 
 .chat-input input {
@@ -102,7 +154,15 @@
   background: #8d6e63;
   color: white;
   cursor: pointer;
+  transition: 0.2s;
 }
+
+.chat-input button:hover {
+  background: #75584f;
+  transform: scale(1.05);
+}
+
+/* DISCLAIMER */
 
 .chat-disclaimer {
   margin-top: 12px;

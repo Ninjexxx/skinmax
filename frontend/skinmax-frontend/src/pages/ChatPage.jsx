@@ -1,7 +1,82 @@
+import { useState } from "react";
 import Sidebar from "../components/Sidebar/Sidebar";
 import "../styles/chatPage.css";
 
 export default function ChatPage() {
+  const [message, setMessage] = useState("");
+  const [messages, setMessages] = useState([]);
+
+  const [sessionId, setSessionId] = useState(
+    localStorage.getItem("chatSession") || ""
+  );
+
+  const sendMessage = async () => {
+    if (!message.trim()) return;
+
+    const token = localStorage.getItem("token");
+
+    const currentMessage = message;
+
+    setMessages((prev) => [
+      ...prev,
+      {
+        role: "user",
+        content: currentMessage,
+      },
+    ]);
+
+    setMessage("");
+
+    try {
+      const response = await fetch(
+        "http://localhost:8080/chat",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify({
+            session_id: sessionId,
+            message: currentMessage,
+          }),
+        }
+      );
+
+      const data = await response.json();
+
+      setSessionId(data.session_id);
+
+      localStorage.setItem(
+        "chatSession",
+        data.session_id
+      );
+
+      setMessages((prev) => [
+        ...prev,
+        {
+          role: "assistant",
+          content: data.reply,
+        },
+      ]);
+    } catch (err) {
+      console.error(err);
+
+      setMessages((prev) => [
+        ...prev,
+        {
+          role: "assistant",
+          content:
+            "Sorry, I couldn't reach the AI assistant.",
+        },
+      ]);
+    }
+  };
+
+  const usePrompt = (prompt) => {
+    setMessage(prompt);
+  };
+
   return (
     <div className="layout">
       <Sidebar />
@@ -21,6 +96,7 @@ export default function ChatPage() {
           />
         </div>
 
+        {/* Landing Section */}
         <div className="chat-empty">
 
           <div className="bot-icon">
@@ -28,7 +104,7 @@ export default function ChatPage() {
           </div>
 
           <h1>
-            Start Chat with Bot
+            Start Chat with Glow
           </h1>
 
           <p>
@@ -38,21 +114,61 @@ export default function ChatPage() {
 
         </div>
 
+        {/* Messages appear below landing section */}
+        {messages.length > 0 && (
+          <div className="chat-messages">
+
+            {messages.map((msg, index) => (
+              <div
+                key={index}
+                className={`message ${msg.role}`}
+              >
+                {msg.content}
+              </div>
+            ))}
+
+          </div>
+        )}
+
         <div className="quick-prompts">
 
-          <button>
+          <button
+            onClick={() =>
+              usePrompt(
+                "Review my skincare routine"
+              )
+            }
+          >
             📅 Review my routine
           </button>
 
-          <button>
+          <button
+            onClick={() =>
+              usePrompt(
+                "Explain my last scan"
+              )
+            }
+          >
             🔍 Explain my last scan
           </button>
 
-          <button>
+          <button
+            onClick={() =>
+              usePrompt(
+                "Give me weather based skincare tips"
+              )
+            }
+          >
             ☀️ Weather tips
           </button>
 
-          <button>
+          <button
+            onClick={() =>
+              usePrompt(
+                "I want to talk to a dermatologist"
+              )
+            }
+          >
             👨‍⚕️ Talk to Dermatologist
           </button>
 
@@ -62,10 +178,21 @@ export default function ChatPage() {
 
           <input
             type="text"
+            value={message}
+            onChange={(e) =>
+              setMessage(e.target.value)
+            }
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                sendMessage();
+              }
+            }}
             placeholder="Ask anything about your skin..."
           />
 
-          <button>
+          <button
+            onClick={sendMessage}
+          >
             ➤
           </button>
 

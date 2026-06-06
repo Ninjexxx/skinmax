@@ -8,7 +8,11 @@ export default function Login() {
   const handleGoogleLogin = async () => {
     try {
       const data = await loginWithGoogle();
-
+      localStorage.setItem(
+        "token",
+        data.token
+      );
+      
       localStorage.setItem(
         "user",
         JSON.stringify(data.user)

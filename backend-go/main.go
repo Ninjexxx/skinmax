@@ -67,8 +67,13 @@ func main() {
 	r.Get("/health", func(w http.ResponseWriter, r *http.Request) {
 		w.Write([]byte(`{"status":"ok"}`))
 	})
-	r.Post("/chat", handleChat)
-	r.Post("/chat/reset", handleReset)
+	r.With(func(next http.Handler) http.Handler {
+		return FirebaseAuth(projectID, next)
+	}).Post("/chat", handleChat)
+
+	r.With(func(next http.Handler) http.Handler {
+		return FirebaseAuth(projectID, next)
+	}).Post("/chat/reset", handleReset)
 
 	r.Post("/register", http.HandlerFunc(registerHandler).ServeHTTP)
 
