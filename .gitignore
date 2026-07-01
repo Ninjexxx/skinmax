@@ -10,3 +10,9 @@ __pycache__/
 *.webp
 serviceAccountKey.json
 .env
+
+# Personal images & test outputs
+*.jpeg
+*.jpg
+!ML/tests/images/*.jpg
+ML/outputs/
