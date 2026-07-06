@@ -13,17 +13,17 @@ export default function RoutineCard({
     <div className="routine-card">
 
       <h4 className="routine-title">
-        RECOMMENDED RITUAL
+        RITUAL RECOMENDADO
       </h4>
 
       <div className="routine-grid">
 
         <div className="routine-column">
-          <h3>☀️ Morning Ritual</h3>
+          <h3>Ritual da manhã</h3>
 
           {morning.length === 0 ? (
             <p>
-              No morning routine available.
+              Nenhuma rotina matinal disponível.
             </p>
           ) : (
             morning.map(
@@ -33,7 +33,7 @@ export default function RoutineCard({
                   className="routine-item"
                 >
                   <strong>
-                    Step {index + 1}
+                    Passo {index + 1}
                   </strong>
 
                   <p>{item}</p>
@@ -44,11 +44,11 @@ export default function RoutineCard({
         </div>
 
         <div className="routine-column">
-          <h3>🌙 Evening Ritual</h3>
+          <h3>Ritual da noite</h3>
 
           {evening.length === 0 ? (
             <p>
-              No evening routine available.
+              Nenhuma rotina noturna disponível.
             </p>
           ) : (
             evening.map(
@@ -58,7 +58,7 @@ export default function RoutineCard({
                   className="routine-item"
                 >
                   <strong>
-                    Step {index + 1}
+                    Passo {index + 1}
                   </strong>
 
                   <p>{item}</p>

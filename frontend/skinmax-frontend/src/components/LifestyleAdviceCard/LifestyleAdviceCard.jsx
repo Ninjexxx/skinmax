@@ -4,18 +4,18 @@ export default function LifestyleAdviceCard({
   advice = [],
 }) {
   const icons = [
-    "💊",
-    "🍊",
-    "🛏",
-    "🚫",
-    "💧",
-    "🥗",
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
   ];
 
   return (
     <div className="lifestyle-card">
       <h3>
-        🧠 Lifestyle Advice
+        Conselhos de estilo de vida
       </h3>
 
       <div className="advice-grid">

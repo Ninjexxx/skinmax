@@ -9,17 +9,17 @@ def ask():
     data = request.get_json()
 
     if not data or 'message' not in data:
-        return jsonify({"error": "No message provided"}), 400
+        return jsonify({"error": "Nenhuma mensagem enviada"}), 400
 
     user_message = data['message'].strip()
 
     if not user_message:
-        return jsonify({"error": "Message cannot be empty"}), 400
+        return jsonify({"error": "A mensagem não pode estar vazia"}), 400
 
     # Placeholder — swap this block out when Reyhan's TF-IDF chatbot is ready
     # from app.ml.chatbot import get_response
     # reply = get_response(user_message)
-    reply = f"Chatbot not ready yet. You asked: '{user_message}'"
+    reply = f"O chatbot ainda não está pronto. Você perguntou: '{user_message}'"
 
     return jsonify({
         "message": user_message,

@@ -19,15 +19,14 @@ export default function UploadCard({
   return (
     <div className="upload-card">
       <div className="upload-icon">
-        ☁
+        +
       </div>
 
-      <h3>Upload Image</h3>
+      <h3>Enviar imagem</h3>
 
       <p>
-        Drag and drop your
-        high-resolution skin profile
-        image.
+        Arraste e solte uma imagem de alta
+        resolução do seu perfil facial.
       </p>
 
       <div className="file-types">
@@ -37,7 +36,7 @@ export default function UploadCard({
       </div>
 
       <label className="upload-btn">
-        Choose Image
+        Escolher imagem
 
         <input
           type="file"

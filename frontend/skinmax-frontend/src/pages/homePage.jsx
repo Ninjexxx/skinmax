@@ -83,7 +83,7 @@ export default function HomePage() {
             className="nav-link"
             onClick={handleAnalysis}
           >
-            Analysis
+            Análise
           </button>
 
           <button
@@ -94,7 +94,7 @@ export default function HomePage() {
               )
             }
           >
-            Routines
+            Rotinas
           </button>
 
           <button
@@ -105,7 +105,7 @@ export default function HomePage() {
               )
             }
           >
-            Progress
+            Progresso
           </button>
 
           <button
@@ -116,7 +116,7 @@ export default function HomePage() {
               )
             }
           >
-            Weather Care
+            Cuidado Climático
           </button>
         </nav>
 
@@ -132,7 +132,7 @@ export default function HomePage() {
               {user?.photoURL ? (
                 <img
                   src={user.photoURL}
-                  alt="Profile"
+                  alt="Perfil"
                   style={{
                     width: "40px",
                     height: "40px",
@@ -164,7 +164,7 @@ export default function HomePage() {
                 className="login-btn"
                 onClick={handleLogout}
               >
-                Logout
+                Sair
               </button>
             </div>
           ) : (
@@ -173,14 +173,14 @@ export default function HomePage() {
                 className="login-btn"
                 onClick={() => navigate("/login")}
               >
-                Log In
+                Entrar
               </button>
 
               <button
                 className="signup-btn"
                 onClick={() => navigate("/login")}
               >
-                Sign Up
+                Criar conta
               </button>
             </>
           )}
@@ -192,21 +192,20 @@ export default function HomePage() {
         <div className="blob blob2"></div>
 
         <span className="badge">
-          PIONEERING COMPUTER VISION
+          VISÃO COMPUTACIONAL AVANÇADA
         </span>
 
         <h1>
-          Discover Your Best Skin
+          Descubra sua melhor pele
           <br />
-          with AI
+          com IA
         </h1>
 
         <p>
-          Advanced facial analysis powered by
-          computer vision and artificial
-          intelligence. Personalized clinical
-          precision in the comfort of your own
-          home.
+          Análise facial avançada com visão
+          computacional e inteligência artificial.
+          Precisão personalizada no conforto da sua
+          casa.
         </p>
 
         <div className="hero-buttons">
@@ -214,7 +213,7 @@ export default function HomePage() {
             className="primary-btn"
             onClick={handleAnalysis}
           >
-            Start Your Analysis
+            Começar análise
           </button>
 
           <button
@@ -225,111 +224,111 @@ export default function HomePage() {
               )
             }
           >
-            View Sample Report
+            Ver relatório exemplo
           </button>
         </div>
 
         <div className="hero-card">
-          <img src={modelImage} alt="AI Analysis" />
+          <img src={modelImage} alt="Análise com IA" />
 
           <div className="floating-card hydration">
-            <h4>Hydration Level</h4>
+            <h4>Nível de hidratação</h4>
 
             <div className="bar">
               <div className="fill"></div>
             </div>
 
-            <span>82% Optimal</span>
+            <span>82% ideal</span>
           </div>
 
           <div className="floating-card recommendation">
-            <h4>AI Recommendation</h4>
+            <h4>Recomendação da IA</h4>
 
             <p>
-              Switch to a ceramide-based
-              cleanser for nightly repair.
+              Troque para um limpador com
+              ceramidas para reparo noturno.
             </p>
           </div>
         </div>
       </section>
 
       <section className="features">
-        <h2>Precision Met with Ritual</h2>
+        <h2>Precisão aliada ao ritual</h2>
 
         <p>
-          Beyond surface level. We analyze
-          multiple markers to curate your
-          routine.
+          Além da superfície. Analisamos
+          múltiplos marcadores para montar sua
+          rotina.
         </p>
 
         <div className="bento-grid">
           <div className="card large">
-            <h3>Precision Analysis</h3>
+            <h3>Análise precisa</h3>
 
             <p>
-              AI-powered skin diagnostics
-              with detailed insights.
+              Diagnóstico de pele com IA
+              e insights detalhados.
             </p>
           </div>
 
           <div className="card tall">
-            <h3>Progress Tracking</h3>
+            <h3>Acompanhamento</h3>
 
             <p>
-              Track improvements across
-              weeks and months.
+              Acompanhe melhorias ao longo
+              de semanas e meses.
             </p>
           </div>
 
           <div className="card">
-            <h3>AI Chat</h3>
+            <h3>Chat com IA</h3>
 
             <p>
-              Ask questions about your
-              routine in real time.
+              Tire dúvidas sobre sua
+              rotina em tempo real.
             </p>
           </div>
 
           <div className="card wide">
-            <h3>Custom Routines</h3>
+            <h3>Rotinas personalizadas</h3>
 
             <p>
-              Morning and evening protocols
-              tailored for your skin.
+              Protocolos da manhã e da noite
+              adaptados à sua pele.
             </p>
           </div>
         </div>
       </section>
 
       <section className="flow">
-        <h2>The Ritual Flow</h2>
+        <h2>Fluxo do ritual</h2>
 
         <div className="steps">
           <div className="step">
             <span>01</span>
-            <h3>Snap a Selfie</h3>
+            <h3>Tire uma selfie</h3>
           </div>
 
           <div className="step">
             <span>02</span>
-            <h3>AI Processing</h3>
+            <h3>Processamento com IA</h3>
           </div>
 
           <div className="step">
             <span>03</span>
-            <h3>Daily Protocol</h3>
+            <h3>Protocolo diário</h3>
           </div>
         </div>
       </section>
 
       <section className="testimonials">
-        <h2>Voices of Clarity</h2>
+        <h2>Vozes de clareza</h2>
 
         <div className="testimonial-grid">
           <div className="testimonial">
             <p>
-              "The AI analysis was startlingly
-              accurate."
+              "A análise da IA foi
+              surpreendentemente precisa."
             </p>
 
             <h4>Elena R.</h4>
@@ -337,8 +336,8 @@ export default function HomePage() {
 
           <div className="testimonial">
             <p>
-              "My routine is now minimal and
-              effective."
+              "Minha rotina agora é simples
+              e eficaz."
             </p>
 
             <h4>Marcus T.</h4>
@@ -348,20 +347,20 @@ export default function HomePage() {
 
       <section className="cta">
         <h2>
-          Ready for Your Private
-          Consultation?
+          Pronto para sua consulta
+          personalizada?
         </h2>
 
         <p>
-          Start your first scan today and
-          experience the future of skincare.
+          Comece seu primeiro escaneamento hoje e
+          experimente o futuro do skincare.
         </p>
 
         <button
           className="primary-btn"
           onClick={handleAnalysis}
         >
-          Start Your Analysis
+          Começar análise
         </button>
       </section>
 
@@ -372,9 +371,9 @@ export default function HomePage() {
         </div>
 
         <div className="footer-links">
-          <a href="#">Privacy Policy</a>
-          <a href="#">Terms of Service</a>
-          <a href="#">Contact</a>
+          <a href="#">Política de privacidade</a>
+          <a href="#">Termos de serviço</a>
+          <a href="#">Contato</a>
         </div>
       </footer>
     </div>

@@ -4,37 +4,37 @@ export default function AcneAnalysisCard({
   results = {},
 }) {
   const severity =
-    results.acne_severity || "N/A";
+    results.acne_severity || "N/D";
 
   const count =
-    results.acne_count ?? "N/A";
+    results.acne_count ?? "N/D";
 
   return (
     <div className="acne-card">
 
       <h4 className="section-title">
-        ACNE ANALYSIS
+        ANÁLISE DE ACNE
       </h4>
 
       <div className="zones-grid">
 
         <div className="zone-card red">
-          <h3>Severity</h3>
+          <h3>Gravidade</h3>
 
           <p>{severity}</p>
 
           <button>
-            Analysis
+            Analisar
           </button>
         </div>
 
         <div className="zone-card blue">
-          <h3>Detected Spots</h3>
+          <h3>Pontos detectados</h3>
 
           <p>{count}</p>
 
           <button>
-            Review
+            Revisar
           </button>
         </div>
 
@@ -51,7 +51,7 @@ export default function AcneAnalysisCard({
             fontWeight: "600",
           }}
         >
-          ✓ No active acne detected
+          Nenhuma acne ativa detectada
         </div>
       )}
 

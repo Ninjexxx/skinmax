@@ -16,7 +16,7 @@ export default function ScanPage() {
 
   const handleAnalyze = async () => {
     if (!image?.file) {
-      alert("Please upload an image first.");
+      alert("Envie uma imagem antes de continuar.");
       return;
     }
 
@@ -24,7 +24,7 @@ export default function ScanPage() {
       const user = auth.currentUser;
 
       if (!user) {
-        alert("Please login first.");
+        alert("Entre na sua conta antes de continuar.");
         navigate("/login");
         return;
       }
@@ -57,14 +57,14 @@ export default function ScanPage() {
         await response.json();
 
       console.log(
-        "Analysis Result:",
+        "Resultado da análise:",
         data
       );
 
       if (!response.ok) {
         throw new Error(
           data.error ||
-            "Analysis failed"
+            "Falha na análise"
         );
       }
 
@@ -84,7 +84,7 @@ export default function ScanPage() {
 
       alert(
         error.message ||
-          "Analysis failed"
+          "Falha na análise"
       );
     }
   };
@@ -110,13 +110,13 @@ export default function ScanPage() {
             className="analyze-btn"
             onClick={handleAnalyze}
           >
-            Analyze My Skin
+            Analisar minha pele
           </button>
 
           <div className="tips-row">
-            <span>☀ Natural Lighting</span>
-            <span>😊 Neutral Expression</span>
-            <span>🚫 Remove Makeup</span>
+            <span>Luz natural</span>
+            <span>Expressão neutra</span>
+            <span>Remova maquiagem</span>
           </div>
 
           <ScanFooter />

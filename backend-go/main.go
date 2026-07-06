@@ -17,13 +17,13 @@ import (
 
 func main() {
 	if err := godotenv.Load(); err != nil {
-		log.Println("No .env file, using environment variables")
+		log.Println("Arquivo .env não encontrado; usando variáveis de ambiente")
 	}
 	projectID := os.Getenv("FIREBASE_PROJECT_ID")
 	flaskURL := os.Getenv("FLASK_BACKEND_URL")
 	port := os.Getenv("PORT")
 	if projectID == "" {
-		log.Fatal("FIREBASE_PROJECT_ID not set")
+		log.Fatal("FIREBASE_PROJECT_ID não configurado")
 	}
 	if port == "" {
 		port = "8080"
@@ -33,7 +33,7 @@ func main() {
 		targetURL := flaskURL + r.URL.Path
 		req, err := http.NewRequest(r.Method, targetURL, r.Body)
 		if err != nil {
-			http.Error(w, "proxy error", http.StatusInternalServerError)
+			http.Error(w, "erro no proxy", http.StatusInternalServerError)
 			return
 		}
 		for key, values := range r.Header {
@@ -44,7 +44,7 @@ func main() {
 		client := &http.Client{}
 		resp, err := client.Do(req)
 		if err != nil {
-			http.Error(w, "failed to reach Flask: "+err.Error(), http.StatusBadGateway)
+			http.Error(w, "falha ao acessar o Flask: "+err.Error(), http.StatusBadGateway)
 			return
 		}
 		defer resp.Body.Close()
@@ -79,7 +79,7 @@ func main() {
 
 	r.Handle("/*", protected)
 
-	log.Printf("SkinMax gateway + chatbot running on :%s -> Flask at %s", port, flaskURL)
+	log.Printf("Gateway SkinMax + chatbot rodando em :%s -> Flask em %s", port, flaskURL)
 	log.Fatal(http.ListenAndServe(":"+port, r))
 }
 
@@ -111,12 +111,12 @@ var sessionStore = NewSessionStore()
 func handleChat(w http.ResponseWriter, r *http.Request) {
 	var req ChatRequest
 	if err := json.NewDecoder(r.Body).Decode(&req); err != nil {
-		http.Error(w, "invalid request", http.StatusBadRequest)
+		http.Error(w, "requisição inválida", http.StatusBadRequest)
 		return
 	}
 
 	if req.Message == "" {
-		http.Error(w, "message is required", http.StatusBadRequest)
+		http.Error(w, "mensagem obrigatória", http.StatusBadRequest)
 		return
 	}
 
@@ -130,8 +130,8 @@ func handleChat(w http.ResponseWriter, r *http.Request) {
 
 	reply, err := callLLM(r.Context(), systemPrompt, history)
 	if err != nil {
-		log.Printf("LLM error: %v", err)
-		http.Error(w, "AI service error", http.StatusInternalServerError)
+		log.Printf("Erro no LLM: %v", err)
+		http.Error(w, "erro no serviço de IA", http.StatusInternalServerError)
 		return
 	}
 
@@ -150,7 +150,7 @@ func handleReset(w http.ResponseWriter, r *http.Request) {
 		SessionID string `json:"session_id"`
 	}
 	if err := json.NewDecoder(r.Body).Decode(&body); err != nil || body.SessionID == "" {
-		http.Error(w, "session_id required", http.StatusBadRequest)
+		http.Error(w, "session_id obrigatório", http.StatusBadRequest)
 		return
 	}
 	sessionStore.Delete(body.SessionID)
@@ -158,21 +158,21 @@ func handleReset(w http.ResponseWriter, r *http.Request) {
 }
 
 func buildSystemPrompt(profile *SkinProfile) string {
-	base := `You are Glow, a friendly and knowledgeable AI skincare assistant for SkinMax.
-You help users understand their skin, recommend routines, explain ingredients, and answer skincare and haircare questions.
-Keep responses concise, warm, and practical. Use simple language and avoid overwhelming jargon.
-If a question is unrelated to skincare, haircare, or wellness, politely redirect the user.`
+	base := `Você é Glow, um assistente de IA amigável e bem informado sobre skincare para a SkinMax.
+Você ajuda usuários a entender a própria pele, recomendar rotinas, explicar ingredientes e responder perguntas sobre skincare e cuidados capilares.
+Responda sempre em português do Brasil, de forma concisa, acolhedora e prática. Use linguagem simples e evite jargões excessivos.
+Se uma pergunta não tiver relação com skincare, cabelo ou bem-estar, redirecione o usuário com educação.`
 
 	if profile == nil {
 		return base
 	}
 
-	profileContext := "\n\nUser's skin profile from analysis:\n"
+	profileContext := "\n\nPerfil de pele do usuário vindo da análise:\n"
 	if profile.SkinType != "" {
-		profileContext += "- Skin type: " + profile.SkinType + "\n"
+		profileContext += "- Tipo de pele: " + profile.SkinType + "\n"
 	}
 	if len(profile.Concerns) > 0 {
-		profileContext += "- Concerns: "
+		profileContext += "- Preocupações: "
 		for i, c := range profile.Concerns {
 			if i > 0 {
 				profileContext += ", "
@@ -182,12 +182,12 @@ If a question is unrelated to skincare, haircare, or wellness, politely redirect
 		profileContext += "\n"
 	}
 	if profile.SkinTone != "" {
-		profileContext += "- Skin tone: " + profile.SkinTone + "\n"
+		profileContext += "- Tom de pele: " + profile.SkinTone + "\n"
 	}
 	if profile.HairType != "" {
-		profileContext += "- Hair type: " + profile.HairType + "\n"
+		profileContext += "- Tipo de cabelo: " + profile.HairType + "\n"
 	}
-	profileContext += "\nTailor your advice to this user's specific profile when relevant."
+	profileContext += "\nAdapte os conselhos ao perfil específico do usuário quando for relevante."
 
 	return base + profileContext
 }

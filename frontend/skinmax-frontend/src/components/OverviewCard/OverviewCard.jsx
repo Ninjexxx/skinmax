@@ -10,33 +10,33 @@ export default function OverviewCard({
   return (
     <div className="overview-card">
 
-  <div className="overview-left">
+      <div className="overview-left">
 
-    <h3>Original Scan</h3>
+        <h3>Escaneamento original</h3>
 
-    <div className="image-wrapper">
-      <img
-        src={image || hero}
-        alt="Original Face Scan"
-      />
+        <div className="image-wrapper">
+          <img
+            src={image || hero}
+            alt="Escaneamento facial original"
+          />
+        </div>
+
+      </div>
+
+      <div className="overview-right">
+
+        <h3>Análise com IA</h3>
+
+        <div className="viewer-wrapper">
+          <FaceViewer
+            detections={
+              results.acne_detections || []
+            }
+          />
+        </div>
+
+      </div>
+
     </div>
-
-  </div>
-
-  <div className="overview-right">
-
-    <h3>AI Analysis</h3>
-
-    <div className="viewer-wrapper">
-      <FaceViewer
-        detections={
-          results.acne_detections || []
-        }
-      />
-    </div>
-
-  </div>
-
-</div>
   );
 }

@@ -13,12 +13,12 @@ analysis_bp = Blueprint('analysis', __name__, url_prefix='/api/analysis')
 def scan():
     from app.engine.recommender import get_advice
     if 'image' not in request.files:
-        return jsonify({"error": "No image provided"}), 400
+        return jsonify({"error": "Nenhuma imagem enviada"}), 400
 
     image = request.files['image']
 
     if image.filename == '':
-        return jsonify({"error": "Empty filename"}), 400
+        return jsonify({"error": "Nome de arquivo vazio"}), 400
 
     # Save uploaded image to a temp file so Reyhan's function can read it by path
     suffix = os.path.splitext(image.filename)[1] or '.jpg'
@@ -31,7 +31,7 @@ def scan():
         results = analyze_face(tmp_path)
     except Exception as e:
         os.unlink(tmp_path)
-        return jsonify({"error": f"ML pipeline failed: {str(e)}"}), 500
+        return jsonify({"error": f"Falha no pipeline de ML: {str(e)}"}), 500
     finally:
         # Always delete the temp file
         if os.path.exists(tmp_path):

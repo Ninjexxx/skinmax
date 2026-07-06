@@ -30,11 +30,11 @@ export default function AnalysisPage() {
         <div className="dashboard-container">
 
           <header className="page-header">
-            <h1>Skin Analysis Report</h1>
+            <h1>Relatório de análise da pele</h1>
 
             <p>
-              AI-powered assessment of your
-              uploaded facial image.
+              Avaliação da sua imagem facial enviada,
+              feita com IA.
             </p>
           </header>
 
@@ -54,6 +54,7 @@ export default function AnalysisPage() {
           <RoutineCard
             advice={advice}
           />
+
           <LifestyleAdviceCard
             advice={
               results?.advice?.lifestyle || []

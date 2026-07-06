@@ -21,21 +21,21 @@ export default function LandingPage() {
 
       <div className="hero-content">
         <h1 className="hero-title">
-          Your glow,
+          Seu brilho,
           <br />
-          curated.
+          sob medida.
         </h1>
 
         <p className="hero-subtitle">
-          Curated skincare AI recommendations for clean,
-          clear skin.
+          Recomendações de skincare com IA para uma pele limpa,
+          equilibrada e bem cuidada.
         </p>
 
         <button
           className="hero-btn"
           onClick={() => navigate("/home")}
         >
-          ANALYZE TODAY
+          ANALISAR AGORA
         </button>
       </div>
     </section>

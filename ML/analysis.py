@@ -16,13 +16,14 @@ from darkcircle import dark_circles
 
 def analyze_face(image_path: str) -> dict:
     """
-    We are combining our ML results here. The skin tone, lip color, acne coordinates 
-    so that it can be rendered on 3D model, and face_shape, eye_colour, darkcircles, and hair type.
+    Combina os resultados de ML: tom de pele, cor dos lábios,
+    coordenadas de acne para o modelo 3D, formato do rosto,
+    cor dos olhos, olheiras e tipo de cabelo.
     """
     
     img, points = get_landmarks(image_path)
     if points is None:
-        return {"error": "No face detected"}
+        return {"error": "Nenhum rosto detectado"}
     
     skin_result = analyze_skin(img, points)
     lip_result = analyze_lip(img, points)

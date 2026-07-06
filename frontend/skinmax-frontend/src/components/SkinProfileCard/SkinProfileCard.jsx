@@ -7,50 +7,50 @@ export default function SkinProfileCard({
     <div className="skin-profile-card">
 
       <h4 className="section-title">
-        SKIN PROFILE
+        PERFIL DA PELE
       </h4>
 
       <div className="profile-grid">
 
         <div className="profile-item">
-          <span>Skin Tone</span>
+          <span>Tom de pele</span>
           <strong>
-            {results.skin_tone || "N/A"}
+            {results.skin_tone || "N/D"}
           </strong>
         </div>
 
         <div className="profile-item">
-          <span>Undertone</span>
+          <span>Subtom</span>
           <strong>
-            {results.undertone || "N/A"}
+            {results.undertone || "N/D"}
           </strong>
         </div>
 
         <div className="profile-item">
-          <span>Face Shape</span>
+          <span>Formato do rosto</span>
           <strong>
-            {results.face_shape || "N/A"}
+            {results.face_shape || "N/D"}
           </strong>
         </div>
 
         <div className="profile-item">
-          <span>Eye Color</span>
+          <span>Cor dos olhos</span>
           <strong>
-            {results.eye_color || "N/A"}
+            {results.eye_color || "N/D"}
           </strong>
         </div>
 
         <div className="profile-item">
-          <span>Hair Type</span>
+          <span>Tipo de cabelo</span>
           <strong>
-            {results.hair_type || "N/A"}
+            {results.hair_type || "N/D"}
           </strong>
         </div>
 
         <div className="profile-item">
-          <span>Dark Circles</span>
+          <span>Olheiras</span>
           <strong>
-            {results.dark_circles || "N/A"}
+            {results.dark_circles || "N/D"}
           </strong>
         </div>
 

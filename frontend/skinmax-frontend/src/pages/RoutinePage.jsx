@@ -71,31 +71,31 @@ export default function RoutinePage() {
 
         <div className="routine-header">
           <h1>
-            Personalized Routine
+            Rotina personalizada
           </h1>
 
           <p>
-            Generated from your
-            latest skin analysis.
+            Gerada a partir da sua
+            análise de pele mais recente.
           </p>
         </div>
 
         {loading ? (
-          <p>Loading...</p>
+          <p>Carregando...</p>
         ) : (
           <>
             <div className="routine-grid">
 
               <div className="routine-card">
                 <h2>
-                  ☀ Morning Routine
+                  Rotina da manhã
                 </h2>
 
                 {morning.length ===
                 0 ? (
                   <p>
-                    No morning
-                    recommendations.
+                    Nenhuma recomendação
+                    matinal.
                   </p>
                 ) : (
                   morning.map(
@@ -110,7 +110,7 @@ export default function RoutinePage() {
                         className="routine-step"
                       >
                         <strong>
-                          Step{" "}
+                          Passo{" "}
                           {index +
                             1}
                         </strong>
@@ -126,14 +126,14 @@ export default function RoutinePage() {
 
               <div className="routine-card">
                 <h2>
-                  🌙 Evening Routine
+                  Rotina da noite
                 </h2>
 
                 {evening.length ===
                 0 ? (
                   <p>
-                    No evening
-                    recommendations.
+                    Nenhuma recomendação
+                    noturna.
                   </p>
                 ) : (
                   evening.map(
@@ -148,7 +148,7 @@ export default function RoutinePage() {
                         className="routine-step"
                       >
                         <strong>
-                          Step{" "}
+                          Passo{" "}
                           {index +
                             1}
                         </strong>
@@ -166,14 +166,14 @@ export default function RoutinePage() {
 
             <div className="tips-card">
               <h2>
-                🧠 Lifestyle Advice
+                Conselhos de estilo de vida
               </h2>
 
               {lifestyle.length ===
               0 ? (
                 <p>
-                  No lifestyle
-                  advice available.
+                  Nenhum conselho de estilo
+                  de vida disponível.
                 </p>
               ) : (
                 lifestyle.map(

@@ -9,7 +9,7 @@ export default function DermatologistsPage() {
 
     if (!navigator.geolocation) {
       window.open(
-        "https://www.google.com/maps/search/dermatologist+near+me",
+        "https://www.google.com/maps/search/dermatologista+perto+de+mim",
         "_blank"
       );
 
@@ -23,7 +23,7 @@ export default function DermatologistsPage() {
           position.coords;
 
         const url =
-          `https://www.google.com/maps/search/dermatologist/@${latitude},${longitude},14z`;
+          `https://www.google.com/maps/search/dermatologista/@${latitude},${longitude},14z`;
 
         window.open(url, "_blank");
 
@@ -32,7 +32,7 @@ export default function DermatologistsPage() {
 
       () => {
         window.open(
-          "https://www.google.com/maps/search/dermatologist+near+me",
+          "https://www.google.com/maps/search/dermatologista+perto+de+mim",
           "_blank"
         );
 
@@ -65,7 +65,7 @@ export default function DermatologistsPage() {
               marginBottom: "16px",
             }}
           >
-            Find Dermatologists
+            Encontrar dermatologistas
           </h1>
 
           <p
@@ -75,9 +75,9 @@ export default function DermatologistsPage() {
               marginBottom: "40px",
             }}
           >
-            Connect with qualified dermatologists
-            near your location for professional
-            consultation and treatment.
+            Encontre dermatologistas qualificados
+            perto da sua localização para consulta
+            e tratamento profissional.
           </p>
 
           <div
@@ -96,7 +96,7 @@ export default function DermatologistsPage() {
                 marginBottom: "20px",
               }}
             >
-              🩺
+              +
             </div>
 
             <h2
@@ -104,7 +104,7 @@ export default function DermatologistsPage() {
                 marginBottom: "16px",
               }}
             >
-              Locate Nearby Dermatologists
+              Localizar dermatologistas próximos
             </h2>
 
             <p
@@ -113,9 +113,9 @@ export default function DermatologistsPage() {
                 marginBottom: "30px",
               }}
             >
-              We'll use your current location
-              to find dermatologists nearby
-              using Google Maps.
+              Usaremos sua localização atual
+              para encontrar dermatologistas próximos
+              no Google Maps.
             </p>
 
             <button
@@ -132,8 +132,8 @@ export default function DermatologistsPage() {
               }}
             >
               {loading
-                ? "Finding Doctors..."
-                : "Find Dermatologists Near Me"}
+                ? "Procurando profissionais..."
+                : "Encontrar dermatologistas próximos"}
             </button>
           </div>
         </div>

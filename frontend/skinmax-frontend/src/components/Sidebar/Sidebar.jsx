@@ -31,42 +31,42 @@ export default function Sidebar() {
     <aside className="sidebar">
       <div className="logo">
         <h2>SkinMax</h2>
-        <p>Premium AI Skincare</p>
+        <p>Skincare premium com IA</p>
       </div>
 
       <nav className="nav-links">
         <NavLink to="/home">
-          Home
+          Início
         </NavLink>
 
         <NavLink to="/scan">
-          Scan
+          Escanear
         </NavLink>
 
         <NavLink to="/analysis">
-          Analysis
+          Análise
         </NavLink>
 
-        {<NavLink to="/weather">
-          Weather Based Care
-        </NavLink>}
+        <NavLink to="/weather">
+          Cuidado climático
+        </NavLink>
 
         <NavLink to="/dermatologists">
-          Dermatologists
+          Dermatologistas
         </NavLink>
 
         <div className="nav-divider"></div>
 
         <NavLink to="/progress">
-          Progress
+          Progresso
         </NavLink>
 
         <NavLink to="/routines">
-          Routines
+          Rotinas
         </NavLink>
 
         <NavLink to="/chat">
-          AI Assistant
+          Assistente de IA
         </NavLink>
 
       </nav>
@@ -75,19 +75,19 @@ export default function Sidebar() {
         className="scan-btn"
         onClick={handleNewScan}
       >
-        New Scan
+        Novo escaneamento
       </button>
 
       <div className="bottom-links">
-        <a href="#">Settings</a>
+        <a href="#">Configurações</a>
 
-        <a href="#">Support</a>
+        <a href="#">Suporte</a>
 
         <button
           className="logout-btn"
           onClick={handleLogout}
         >
-          Logout
+          Sair
         </button>
       </div>
     </aside>

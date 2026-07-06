@@ -17,7 +17,7 @@ export default function WeatherPage() {
             position.coords;
 
           const response = await fetch(
-            `https://api.weatherapi.com/v1/current.json?key=${API_KEY}&q=${latitude},${longitude}&aqi=yes`
+            `https://api.weatherapi.com/v1/current.json?key=${API_KEY}&q=${latitude},${longitude}&aqi=yes&lang=pt`
           );
 
           const data = await response.json();
@@ -42,7 +42,7 @@ export default function WeatherPage() {
       <div className="layout">
         <Sidebar />
         <main className="weather-content">
-          <h1>Loading Weather...</h1>
+          <h1>Carregando clima...</h1>
         </main>
       </div>
     );
@@ -53,7 +53,7 @@ export default function WeatherPage() {
       <div className="layout">
         <Sidebar />
         <main className="weather-content">
-          <h1>Weather API Error</h1>
+          <h1>Erro na API de clima</h1>
           <pre>
             {JSON.stringify(
               weather,
@@ -90,63 +90,64 @@ export default function WeatherPage() {
 
   if (uv >= 6) {
     morningRoutine.push(
-      "Apply SPF 50+ sunscreen"
+      "Aplique protetor solar FPS 50+"
     );
 
     afternoonRoutine.push(
-      "Re-apply sunscreen every 2 hours"
+      "Reaplique o protetor solar a cada 2 horas"
     );
   }
 
   if (temp >= 30) {
     morningRoutine.push(
-      "Use a lightweight gel moisturizer"
+      "Use um hidratante leve em gel"
     );
 
     afternoonRoutine.push(
-      "Drink plenty of water"
+      "Beba bastante água"
     );
 
     afternoonRoutine.push(
-      "Avoid excessive sun exposure"
+      "Evite exposição solar excessiva"
     );
   }
 
   if (humidity >= 60) {
     nightRoutine.push(
-      "Cleanse thoroughly to remove excess oil"
+      "Limpe bem a pele para remover o excesso de oleosidade"
     );
   }
 
   if (humidity < 45) {
     nightRoutine.push(
-      "Apply a richer moisturizer before sleep"
+      "Aplique um hidratante mais rico antes de dormir"
     );
   }
 
   if (
+    condition.toLowerCase().includes("chuva") ||
     condition.toLowerCase().includes("rain")
   ) {
     nightRoutine.push(
-      "Double cleanse to remove pollutants"
+      "Faça dupla limpeza para remover poluentes"
     );
   }
 
   if (morningRoutine.length === 0) {
     morningRoutine.push(
-      "Follow your regular skincare routine"
+      "Siga sua rotina regular de skincare"
     );
   }
 
   if (afternoonRoutine.length === 0) {
     afternoonRoutine.push(
-      "Stay hydrated and protect your skin"
+      "Mantenha a hidratação e proteja sua pele"
     );
   }
 
   if (nightRoutine.length === 0) {
     nightRoutine.push(
-      "Maintain your regular night-time routine"
+      "Mantenha sua rotina noturna regular"
     );
   }
 
@@ -157,12 +158,11 @@ export default function WeatherPage() {
       <main className="weather-content">
 
         <div className="weather-header">
-          <h1>Weather-Based Care</h1>
+          <h1>Cuidado baseado no clima</h1>
 
           <p>
-            Personalized skincare
-            recommendations based on
-            current weather conditions.
+            Recomendações personalizadas de skincare
+            com base nas condições climáticas atuais.
           </p>
         </div>
 
@@ -170,18 +170,18 @@ export default function WeatherPage() {
 
           <div>
             <h2>
-              📍 {weather.location.name},{" "}
+              {weather.location.name},{" "}
               {weather.location.region}
             </h2>
 
             <p>{condition}</p>
 
             <p>
-              Feels Like: {feelsLike}°C
+              Sensação térmica: {feelsLike}°C
             </p>
 
             <p>
-              Wind: {wind} km/h
+              Vento: {wind} km/h
             </p>
           </div>
 
@@ -189,17 +189,17 @@ export default function WeatherPage() {
 
             <div>
               <span>{temp}°C</span>
-              <p>Temperature</p>
+              <p>Temperatura</p>
             </div>
 
             <div>
               <span>{humidity}%</span>
-              <p>Humidity</p>
+              <p>Umidade</p>
             </div>
 
             <div>
               <span>{uv}</span>
-              <p>UV Index</p>
+              <p>Índice UV</p>
             </div>
 
           </div>
@@ -211,34 +211,34 @@ export default function WeatherPage() {
           <div className="info-card">
 
             <h3>
-              Skin Risk Analysis
+              Análise de risco para a pele
             </h3>
 
             <p>
               <strong>
-                UV Exposure:
+                Exposição UV:
               </strong>{" "}
               {uv >= 6
-                ? "High"
-                : "Moderate"}
+                ? "Alta"
+                : "Moderada"}
             </p>
 
             <p>
               <strong>
-                Dehydration Risk:
+                Risco de desidratação:
               </strong>{" "}
               {humidity < 45
-                ? "High"
-                : "Moderate"}
+                ? "Alto"
+                : "Moderado"}
             </p>
 
             <p>
               <strong>
-                Oiliness Risk:
+                Risco de oleosidade:
               </strong>{" "}
               {humidity > 60
-                ? "High"
-                : "Moderate"}
+                ? "Alto"
+                : "Moderado"}
             </p>
 
           </div>
@@ -248,13 +248,13 @@ export default function WeatherPage() {
         <div className="routine-card">
 
           <h2>
-            Today's Personalized Care
+            Cuidado personalizado de hoje
           </h2>
 
           <div className="routine-grid">
 
             <div>
-              <h3>🌅 Morning</h3>
+              <h3>Manhã</h3>
 
               <ul>
                 {morningRoutine.map(
@@ -271,7 +271,7 @@ export default function WeatherPage() {
             </div>
 
             <div>
-              <h3>☀ Afternoon</h3>
+              <h3>Tarde</h3>
 
               <ul>
                 {afternoonRoutine.map(
@@ -288,7 +288,7 @@ export default function WeatherPage() {
             </div>
 
             <div>
-              <h3>🌙 Night</h3>
+              <h3>Noite</h3>
 
               <ul>
                 {nightRoutine.map(

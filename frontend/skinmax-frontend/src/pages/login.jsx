@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { loginWithGoogle } from "../firebase";
+import { loginWithGoogle } from "../Firebase";
 import "../styles/login.css";
 
 export default function Login() {
@@ -12,7 +12,7 @@ export default function Login() {
         "token",
         data.token
       );
-      
+
       localStorage.setItem(
         "user",
         JSON.stringify(data.user)
@@ -40,7 +40,7 @@ export default function Login() {
     } catch (error) {
       console.error(error);
 
-      alert("Google Sign In failed");
+      alert("Falha ao entrar com Google");
     }
   };
 
@@ -50,7 +50,7 @@ export default function Login() {
 
         <div className="login-header">
           <h1>SkinMax</h1>
-          <p>AI SKINCARE RITUAL</p>
+          <p>RITUAL DE SKINCARE COM IA</p>
         </div>
 
         <button
@@ -67,7 +67,7 @@ export default function Login() {
             }}
           />
 
-          Continue with Google
+          Continuar com Google
         </button>
 
         <p
@@ -78,20 +78,20 @@ export default function Login() {
             textAlign: "center"
           }}
         >
-          Secure authentication powered by Google
+          Autenticação segura pelo Google
         </p>
 
       </div>
 
       <footer className="login-footer">
         <div className="footer-links">
-          <a href="#">Privacy</a>
-          <a href="#">Terms</a>
-          <a href="#">Sustainability</a>
+          <a href="#">Privacidade</a>
+          <a href="#">Termos</a>
+          <a href="#">Sustentabilidade</a>
         </div>
 
         <p>
-          © 2026 SkinMax. Premium AI Skincare.
+          © 2026 SkinMax. Skincare premium com IA.
         </p>
       </footer>
     </div>

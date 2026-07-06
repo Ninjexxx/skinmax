@@ -14,7 +14,6 @@ export default function ChatPage() {
     if (!message.trim()) return;
 
     const token = localStorage.getItem("token");
-
     const currentMessage = message;
 
     setMessages((prev) => [
@@ -67,7 +66,7 @@ export default function ChatPage() {
         {
           role: "assistant",
           content:
-            "Sorry, I couldn't reach the AI assistant.",
+            "Desculpe, não consegui acessar o assistente de IA.",
         },
       ]);
     }
@@ -85,36 +84,34 @@ export default function ChatPage() {
 
         <div className="chat-header">
           <div>
-            <h2>🤖 SkinMax AI Assistant</h2>
-            <p>Online and ready to help</p>
+            <h2>Assistente de IA SkinMax</h2>
+            <p>Online e pronto para ajudar</p>
           </div>
 
           <img
             src="https://i.pravatar.cc/40"
-            alt="Profile"
+            alt="Perfil"
             className="chat-avatar"
           />
         </div>
 
-        {/* Landing Section */}
         <div className="chat-empty">
 
           <div className="bot-icon">
-            🤖
+            IA
           </div>
 
           <h1>
-            Start Chat with Glow
+            Comece a conversar com Glow
           </h1>
 
           <p>
-            Ask me about your skincare routine,
-            latest scan, or weather-based care.
+            Pergunte sobre sua rotina de skincare,
+            seu último escaneamento ou cuidados pelo clima.
           </p>
 
         </div>
 
-        {/* Messages appear below landing section */}
         {messages.length > 0 && (
           <div className="chat-messages">
 
@@ -135,41 +132,41 @@ export default function ChatPage() {
           <button
             onClick={() =>
               usePrompt(
-                "Review my skincare routine"
+                "Revise minha rotina de skincare"
               )
             }
           >
-            📅 Review my routine
+            Revisar minha rotina
           </button>
 
           <button
             onClick={() =>
               usePrompt(
-                "Explain my last scan"
+                "Explique meu último escaneamento"
               )
             }
           >
-            🔍 Explain my last scan
+            Explicar meu último escaneamento
           </button>
 
           <button
             onClick={() =>
               usePrompt(
-                "Give me weather based skincare tips"
+                "Me dê dicas de skincare com base no clima"
               )
             }
           >
-            ☀️ Weather tips
+            Dicas pelo clima
           </button>
 
           <button
             onClick={() =>
               usePrompt(
-                "I want to talk to a dermatologist"
+                "Quero falar com um dermatologista"
               )
             }
           >
-            👨‍⚕️ Talk to Dermatologist
+            Falar com dermatologista
           </button>
 
         </div>
@@ -187,21 +184,21 @@ export default function ChatPage() {
                 sendMessage();
               }
             }}
-            placeholder="Ask anything about your skin..."
+            placeholder="Pergunte qualquer coisa sobre sua pele..."
           />
 
           <button
             onClick={sendMessage}
           >
-            ➤
+            Enviar
           </button>
 
         </div>
 
         <p className="chat-disclaimer">
-          SkinMax AI can make mistakes.
-          Consider consulting a professional
-          for severe conditions.
+          A IA da SkinMax pode cometer erros.
+          Considere consultar um profissional
+          em condições graves.
         </p>
 
       </main>

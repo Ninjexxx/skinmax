@@ -59,19 +59,19 @@ export default function ProgressPage() {
 
         <div className="progress-header">
           <h1>
-            Progress Tracker
+            Acompanhamento de progresso
           </h1>
 
           <p>
-            Monitor your skin
-            journey over time.
+            Monitore a evolução da sua pele
+            ao longo do tempo.
           </p>
         </div>
 
         <div className="stats-grid">
 
           <div className="stat-card">
-            <h3>Total Scans</h3>
+            <h3>Total de análises</h3>
 
             <div className="stat-value">
               {history.length}
@@ -80,7 +80,7 @@ export default function ProgressPage() {
 
           <div className="stat-card">
             <h3>
-              Current Acne
+              Acne atual
             </h3>
 
             <div className="stat-value">
@@ -93,7 +93,7 @@ export default function ProgressPage() {
 
           <div className="stat-card">
             <h3>
-              Skin Tone
+              Tom de pele
             </h3>
 
             <div className="stat-value">
@@ -105,16 +105,16 @@ export default function ProgressPage() {
 
         <div className="history-card">
 
-          <h2>Scan History</h2>
+          <h2>Histórico de análises</h2>
 
           {loading && (
-            <p>Loading...</p>
+            <p>Carregando...</p>
           )}
 
           {!loading &&
             history.length === 0 && (
               <p>
-                No scans found.
+                Nenhuma análise encontrada.
               </p>
             )}
 
@@ -125,14 +125,14 @@ export default function ProgressPage() {
                 className="history-item"
               >
                 <div>
-                  📅{" "}
+                  Data:{" "}
                   {new Date(
                     scan.created_at
                   ).toLocaleDateString()}
                 </div>
 
                 <div>
-                  Skin Tone:{" "}
+                  Tom de pele:{" "}
                   {
                     scan.skin_tone
                   }
@@ -146,7 +146,7 @@ export default function ProgressPage() {
                 </div>
 
                 <div>
-                  Face Shape:{" "}
+                  Formato do rosto:{" "}
                   {
                     scan.face_shape
                   }

@@ -9,7 +9,7 @@ export default function CameraCard({ image }) {
             ? image.preview
             : "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=800"
         }
-        alt="Preview"
+        alt="Pré-visualização"
         className="camera-image"
       />
 
@@ -22,20 +22,20 @@ export default function CameraCard({ image }) {
           }`}
         >
           {image?.preview
-            ? "✓ IMAGE UPLOADED"
-            : "● AI READY"}
+            ? "IMAGEM ENVIADA"
+            : "IA PRONTA"}
         </div>
 
         <h3>
           {image?.preview
-            ? "Ready For Analysis"
-            : "Upload Face Image"}
+            ? "Pronta para análise"
+            : "Envie uma imagem do rosto"}
         </h3>
 
         <p>
           {image?.preview
-            ? "Your image has been uploaded successfully. Click Analyze My Skin to continue."
-            : "Upload a clear front-facing image for accurate AI skin analysis."}
+            ? "Sua imagem foi enviada com sucesso. Clique em Analisar minha pele para continuar."
+            : "Envie uma imagem frontal e nítida para uma análise de pele mais precisa."}
         </p>
       </div>
     </div>

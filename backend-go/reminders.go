@@ -28,7 +28,7 @@ func registerHandler(w http.ResponseWriter, r *http.Request) {
 	}
 	json.NewDecoder(r.Body).Decode(&body)
 	if body.FCMToken == "" {
-		http.Error(w, "fcm_token required", 400)
+		http.Error(w, "fcm_token obrigatório", 400)
 		return
 	}
 
@@ -38,8 +38,8 @@ func registerHandler(w http.ResponseWriter, r *http.Request) {
 	mu.Unlock()
 
 	if isFirst {
-		scheduler.AddFunc("0 7 * * *", func() { notifyAll("🌅 Morning routine time!", "Start your morning skincare") })
-		scheduler.AddFunc("0 21 * * *", func() { notifyAll("🌙 Evening routine time!", "Start your evening skincare") })
+		scheduler.AddFunc("0 7 * * *", func() { notifyAll("Hora da rotina da manhã", "Comece seu skincare matinal") })
+		scheduler.AddFunc("0 21 * * *", func() { notifyAll("Hora da rotina da noite", "Comece seu skincare noturno") })
 		scheduler.Start()
 	}
 
@@ -70,9 +70,9 @@ func sendFCM(token, title, body string) {
 
 	resp, err := http.DefaultClient.Do(req)
 	if err != nil {
-		log.Printf("[FCM] error: %v", err)
+		log.Printf("[FCM] erro: %v", err)
 		return
 	}
 	defer resp.Body.Close()
-	log.Printf("[FCM] sent to %s... status=%d", token[:10], resp.StatusCode)
+	log.Printf("[FCM] enviado para %s... status=%d", token[:10], resp.StatusCode)
 }
